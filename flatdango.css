@@ -1,0 +1,143 @@
+body {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  h1 {
+    margin: 0px;
+    text-align: center;
+    padding: 0px;
+    color: teal;
+  }
+  
+  header {
+    background-color: black;
+    height: 7vh;
+  }
+  
+  .content {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 93vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .list {
+    width: 29%;
+    height: 98%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    border-radius: 10px;
+  }
+  
+  .details {
+    width: 69%;
+    height: 98%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+  }
+  
+  .cont {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  h2 {
+    text-align: center;
+    margin: 0px;
+    color: teal;
+  }
+  
+  .item {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .item:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .item > label {
+    color: whitesmoke;
+  }
+  
+  .item > button {
+    background-color: orangered;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .nameDiv {
+    padding-top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .key {
+    color: teal;
+    font-weight: bold;
+    font-size: 17px;
+    margin-right: 5px;
+  }
+  
+  .value {
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  
+  p {
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 17px;
+  }
+  
+  img {
+    max-width: 90%;
+    max-height: 60%;
+    border-radius: 10px;
+    margin: auto;
+  }
+  
+  .actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .purchase {
+    background-color: green;
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+  }
+  
+  .purchase-disabled {
+    background-color: transparent;
+    color: orange;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+  }
