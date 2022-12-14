@@ -7,17 +7,23 @@ const poster = document.getElementsByTagName("img")[0];
 const ticketsLabel = document.getElementById("tickets");
 const purchaseButton = document.getElementById("purchase");
 
-let selectedMovie = {};
+let movies = [];
+let selectedMovieId = 1;
 
 window.addEventListener("load", () => {
   fetchData();
 });
 
 purchaseButton.addEventListener("click", () => {
+  const selectedMovie = movies.find((movie) => movie.id == selectedMovieId);
+
   fetch(`http://localhost:3000/films/${selectedMovie.id}`, {
     method: "PUT",
     headers: new Headers({ "content-type": "application/json" }),
-    body: `tickets_sold=${encodeURIComponent(selectedMovie.tickets_sold + 1)}`,
+    body: JSON.stringify({
+      ...selectedMovie,
+      tickets_sold: selectedMovie.tickets_sold + 1,
+    }),
   })
     .then((response) => {
       if (response.ok) {
@@ -27,10 +33,8 @@ purchaseButton.addEventListener("click", () => {
       }
     })
     .then((data) => {
-      console.log(data);
-      selectedMovie = data;
-      //setMovieDetails();
-      //fetchData();
+      fetchData();
+      setMovieDetails();
     })
     .catch((err) => {
       console.log(err);
@@ -41,6 +45,7 @@ function fetchData() {
   fetch("http://localhost:3000/films", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
+      movies = data;
       data.forEach((movie, id) => {
         const listItem = document.createElement("li");
 
@@ -67,17 +72,20 @@ function fetchData() {
         listItem.append(deleteButton);
 
         listItem.addEventListener("click", () => {
-          selectedMovie = movie;
+          selectedMovieId = movie.id;
           setMovieDetails();
         });
 
         list.append(listItem);
       });
+
+      setMovieDetails();
     });
 }
 
 function setMovieDetails() {
-  const movie = selectedMovie;
+  const movie = movies.find((m) => m.id == selectedMovieId);
+
   titleLabel.textContent = movie.title;
   runTimeLabel.textContent = movie.runtime;
   showTimeLabel.textContent = movie.showtime;
@@ -117,5 +125,3 @@ function deleteMovie(movieId) {
       console.log(err);
     });
 }
-
-
