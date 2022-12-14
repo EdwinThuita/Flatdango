@@ -1,0 +1,22 @@
+{
+  "name": "flatdango",
+  "version": "1.0.0",
+  "description": "FlatDango project",
+  "main": "movies.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwinThuita/Flatdango.git"
+  },
+  "keywords": [
+    "flatdango"
+  ],
+  "author": "Edwin Thuita Maina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdwinThuita/Flatdango/issues"
+  },
+  "homepage": "https://github.com/EdwinThuita/Flatdango#readme"
+}
