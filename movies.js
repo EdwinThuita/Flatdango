@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 purchaseButton.addEventListener("click", () => {
   const selectedMovie = movies.find((movie) => movie.id == selectedMovieId);
 
-  fetch(`https://api.npoint.io/0d69167c54e8e8ec40a9/films/${selectedMovie.id}`, {
+  fetch(`http://localhost:3000/films/${selectedMovie.id}`, {
     method: "PUT",
     headers: new Headers({ "content-type": "application/json" }),
     body: JSON.stringify({
@@ -42,10 +42,10 @@ purchaseButton.addEventListener("click", () => {
 });
 
 function fetchData() {
-  fetch("https://api.npoint.io/0d69167c54e8e8ec40a9/films/0", { method: "GET" })
+  fetch("http://localhost:3000/films", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      movies = data;
+      movies = data.filter(movie=>movie.capacity-movie.tickets_sold>0);
       data.forEach((movie, id) => {
         const listItem = document.createElement("li");
 
@@ -105,7 +105,7 @@ function setMovieDetails() {
 }
 
 function deleteMovie(movieId) {
-  fetch(`http://https://api.npoint.io/0d69167c54e8e8ec40a9/films/${movieId}`, {
+  fetch(`http://localhost:3000/films/${movieId}`, {
     method: "DELETE",
     headers: new Headers({ "content-type": "application/json" }),
   })
