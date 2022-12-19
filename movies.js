@@ -16,36 +16,37 @@ window.addEventListener("load", () => {
 
 purchaseButton.addEventListener("click", () => {
   const selectedMovie = movies.find((movie) => movie.id == selectedMovieId);
-
-  fetch(`http://localhost:3000/films/${selectedMovie.id}`, {
-    method: "PUT",
-    headers: new Headers({ "content-type": "application/json" }),
-    body: JSON.stringify({
-      ...selectedMovie,
-      tickets_sold: selectedMovie.tickets_sold + 1,
-    }),
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject(response);
-      }
+  if (selectedMovie.tickets_sold < selectedMovie.capacity) {
+    fetch(`http://localhost:3000/films/${selectedMovie.id}`, {
+      method: "PUT",
+      headers: new Headers({ "content-type": "application/json" }),
+      body: JSON.stringify({
+        ...selectedMovie,
+        tickets_sold: selectedMovie.tickets_sold + 1,
+      }),
     })
-    .then((data) => {
-      fetchData();
-      setMovieDetails();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }
+      })
+      .then((data) => {
+        fetchData();
+        setMovieDetails();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 
 function fetchData() {
   fetch("http://localhost:3000/films", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      movies = data.filter(movie=>movie.capacity-movie.tickets_sold>0);
+      movies = data;
       data.forEach((movie, id) => {
         const listItem = document.createElement("li");
 
