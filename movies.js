@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 purchaseButton.addEventListener("click", () => {
   const selectedMovie = movies.find((movie) => movie.id == selectedMovieId);
   if (selectedMovie.tickets_sold < selectedMovie.capacity) {
-    fetch(`https://api.npoint.io/2fe7405c44f8efa4cccc/films/`, {
+    fetch(`https://api.npoint.io/2fe7405c44f8efa4cccc/films/${selectedMovie.id}`, {
       method: "PUT",
       headers: new Headers({ "content-type": "application/json" }),
       body: JSON.stringify({
