@@ -4,7 +4,7 @@ For this project i was tasked to work on Flatdango. To build  out an
 application, Flatdango, that allows a user to purchase movie tickets from the
 theater.
 ## Running The Live Hosted Application
-* open this [link](https://flatdango-week-3-challenge.netlify.app//) on your browser to access the live web application
+* open this [link](https://https://edwinthuita.github.io/Flatdango///) on your browser to access the live web application
 * you can also follow the link on the left side of the repository below the discription
 * on the browser on the left side there is a list of movies and you click on your movie of interest and you can go ahead to purchase a ticket to the movie.You will also be able to see the available tickets and incase it is sold out if you try to purchase it will give you an alert saying movie sold out
 
