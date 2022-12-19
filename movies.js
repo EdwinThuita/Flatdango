@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 purchaseButton.addEventListener("click", () => {
   const selectedMovie = movies.find((movie) => movie.id == selectedMovieId);
   if (selectedMovie.tickets_sold < selectedMovie.capacity) {
-    fetch(`https://api.npoint.io/2fe7405c44f8efa4cccc/films/${selectedMovie.id}`, {
+    fetch(`https://my-json-server.typicode.com/869324/flatdango/films/${selectedMovie.id}`, {
       method: "PUT",
       headers: new Headers({ "content-type": "application/json" }),
       body: JSON.stringify({
@@ -33,7 +33,8 @@ purchaseButton.addEventListener("click", () => {
         }
       })
       .then((data) => {
-        fetchData();
+        const index = movies.findIndex(movie => movie.id == data.id)
+        movies.splice(index, 1, data)
         setMovieDetails();
       })
       .catch((err) => {
@@ -43,7 +44,7 @@ purchaseButton.addEventListener("click", () => {
 });
 
 function fetchData() {
-  fetch("https://api.npoint.io/2fe7405c44f8efa4cccc/films/", { method: "GET" })
+  fetch("https://my-json-server.typicode.com/869324/flatdango/films/", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
       movies = data;
@@ -106,7 +107,7 @@ function setMovieDetails() {
 }
 
 function deleteMovie(movieId) {
-  fetch(`https://api.npoint.io/2fe7405c44f8efa4cccc/films/`, {
+  fetch(`https://my-json-server.typicode.com/869324/flatdango/films/${movieId}`, {
     method: "DELETE",
     headers: new Headers({ "content-type": "application/json" }),
   })
